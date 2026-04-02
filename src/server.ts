@@ -46,6 +46,13 @@ import('./routes/notifications.js').then(({ notificationRoutes }) => {
   console.error('Failed to load notification routes:', err);
 });
 
+import('./routes/posts.js').then(({ postsRoutes }) => {
+  postsRoutes(app);
+  console.log('✓ Posts routes loaded');
+}).catch(err => {
+  console.error('Failed to load posts routes:', err);
+});
+
 // Health check endpoint
 app.get('/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
